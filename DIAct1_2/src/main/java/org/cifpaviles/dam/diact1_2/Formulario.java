@@ -10,6 +10,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -18,8 +20,10 @@ import java.awt.Color;
 public class Formulario extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Formulario.class.getName());
+    
+    private static List<Alumno> listaAlumnos = new ArrayList<>();
 
-    Alumno [] array5Objetos = new Alumno[5];//array de 5 alumnos(tiene que ser estatico)
+    //Alumno [] array5Objetos = new Alumno[5];//array de 5 alumnos(tiene que ser estatico)
     /**
      * Creates new form Forumulario
      */
@@ -100,7 +104,16 @@ public class Formulario extends javax.swing.JFrame {
         jButton1.setText("aniadir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                //jButton1ActionPerformed(evt);
+            	 Alumno alumno = new Alumno(
+            		        jTextFieldNOMBRE.getText(),
+            		        jTextFieldAPELLIDO.getText(),
+            		        jTextFieldEMAIL.getText(),
+            		        Integer.parseInt(jTextFieldEDAD.getText()),
+            		        Integer.parseInt(jTextFieldTELF.getText())
+            	);
+            	
+            	 listaAlumnos.add(alumno);
             }
         });
         
@@ -111,6 +124,9 @@ public class Formulario extends javax.swing.JFrame {
         
         	table = new JTable();
         	table.setBackground(new Color(128, 255, 0));
+        	
+        	
+        	
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
