@@ -104,19 +104,10 @@ public class Formulario extends javax.swing.JFrame {
         jButton1.setText("aniadir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //jButton1ActionPerformed(evt);
-            	 Alumno alumno = new Alumno(
-            		        jTextFieldNOMBRE.getText(),
-            		        jTextFieldAPELLIDO.getText(),
-            		        jTextFieldEMAIL.getText(),
-            		        Integer.parseInt(jTextFieldEDAD.getText()),
-            		        Integer.parseInt(jTextFieldTELF.getText())
-            	);
-            	
-            	 listaAlumnos.add(alumno);
+                jButton1ActionPerformed(evt);
             }
         });
-        
+
         
 
         alumnoQueCrea.setText("ALUMNO QUE SE CREA");
@@ -221,28 +212,48 @@ public class Formulario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTELFActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         try {
-            /*Obtener los valores de los JTextField
-            String nombre = jTextFieldNOMBRE.getText();
-            String apellido = jTextFieldAPELLIDO.getText();
-            String email = jTextFieldEMAIL.getText();
-            int edad = Integer.parseInt(jTextFieldEDAD.getText());
-            int telf = Integer.parseInt(jTextFieldTELF.getText());
-         */
-            //Crear el objeto Alumno
-        	 //alumnoQueCrea.setText("Alumno: " + alumno.toString());
-             alumnoQueCrea.setText("Alumno: " + listaAlumnos.toString());
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        try {
+            Alumno alumno = new Alumno(
+                jTextFieldNOMBRE.getText(),
+                jTextFieldAPELLIDO.getText(),
+                jTextFieldEMAIL.getText(),
+                Integer.parseInt(jTextFieldEDAD.getText()),
+                Integer.parseInt(jTextFieldTELF.getText())
+            );
 
-            //Principal.agregarAlumno(nuevoAlumno);
+            listaAlumnos.add(alumno);
 
-            //(Opcional) Mostrar confirmación
+            //Mostrar toda la lista en el JLabel
+            StringBuilder sb = new StringBuilder("<html>");
+            for (Alumno a : listaAlumnos) {
+                sb.append(a.getNombre())
+                  .append(" ")
+                  .append(a.getApellido())
+                  .append(" - ")
+                  .append(a.getEmail())
+                  .append(" - ")
+                  .append(a.getEdad())
+                  .append(" años - ")
+                  .append(a.getTelf())
+                  .append("<br>");
+            }
+            sb.append("</html>");
+            alumnoQueCrea.setText(sb.toString());
+
+            jTextFieldNOMBRE.setText("");
+            jTextFieldAPELLIDO.setText("");
+            jTextFieldEMAIL.setText("");
+            jTextFieldEDAD.setText("");
+            jTextFieldTELF.setText("");
+
             javax.swing.JOptionPane.showMessageDialog(this, "Alumno añadido correctamente");
 
         } catch (NumberFormatException e) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Edad debe ser un número");
+            javax.swing.JOptionPane.showMessageDialog(this, "Edad y Teléfono deben ser números");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
+//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
