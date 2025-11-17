@@ -223,18 +223,16 @@ public class Formulario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          try {
-            //Obtener los valores de los JTextField
+            /*Obtener los valores de los JTextField
             String nombre = jTextFieldNOMBRE.getText();
             String apellido = jTextFieldAPELLIDO.getText();
             String email = jTextFieldEMAIL.getText();
             int edad = Integer.parseInt(jTextFieldEDAD.getText());
             int telf = Integer.parseInt(jTextFieldTELF.getText());
-
+         */
             //Crear el objeto Alumno
-            Alumno nuevoAlumno = new Alumno(nombre, apellido, email, edad, telf);
-
-            //(Ejemplo) Mostrarlo por consola o guardarlo en un array
-             alumnoQueCrea.setText("Alumno: " + nuevoAlumno.toString());
+        	 //alumnoQueCrea.setText("Alumno: " + alumno.toString());
+             alumnoQueCrea.setText("Alumno: " + listaAlumnos.toString());
 
             //Principal.agregarAlumno(nuevoAlumno);
 
